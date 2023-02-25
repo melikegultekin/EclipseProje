@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<h1 align="center" style="color:red">[[#{app.title}]]</h1>
+<%
+    String result=(String)request.getAttribute("result");
+%>
+
+
+
+
+<div align="center">
+<!-- <form action="AddServlet" method="post"> -->
+<form method="post"> 
+   <table>
+      <tr>
+          <td>[[#{app.first}]]:</td>
+          <td><input type="text" placeholder="Tam sayı bir değer giriniz" autofocus name="no1" maxlength="4" autocomplete="off"></td>
+      </tr>
+      
+      <tr>
+          <td>[[#{app.second}]]:</td>
+          <td><input type="text" placeholder="Tam sayı bir değer giriniz" name="no2" maxlength="4" autocomplete="off"></td>
+      </tr>
+      
+      <tr>
+      
+          <td>[[#{app.response}]]:</td>
+          <%
+    if(result!=null)
+    {
+%>
+          <td><%=result %></td>
+          <%
+    }
+%>
+      </tr>
+      
+      <tr>
+          <!--<td><input type="submit" value="Topla" onclick="window.location='/AddServlet/doPost';"></td>-->
+          <td><button formaction="AddServlet">[[#{but.sum}]]</button></td>
+          <td><button formaction="AddServlet">[[#{but.subtract}]]</button></td>
+          <td><button formaction="AddServlet">[[#{but.multiplication}]]</button></td>
+          <td><button formaction="AddServlet">[[#{but.division}]]</button></td>
+      </tr>
+      
+   </table>
+<!-- </form>  --> 
+</form>
+</div>
+<script>
+$('#btn1').click(function () {
+	$.ajax({
+		type: 'POST',
+        url: '/AddServlet',
+	});
+});
+
+</script>
+</body>
+</html>
